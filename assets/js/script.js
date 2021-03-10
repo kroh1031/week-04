@@ -2,8 +2,10 @@
 const startButton = document.getElementById('start-btn')
 const cardEl = document.getElementById('card-questions')
 const newCardEl = document.getElementById('question-container')
+const questionEl = document.getElementById('question')
+const answerButtonsEl = document.getElementById('answer-buttons')
 
-// const shuffledQuestions, currentQuestionIndex
+let shuffledQuestions, currentQuestionIndex
 
 startButton.addEventListener('click', startGame)
 
@@ -14,6 +16,8 @@ function startGame() {
     startButton.classList.add('hide')
     cardEl.classList.add('hide')
     cardEl.parentNode.replaceChild(newCardEl, cardEl)
+    shuffledQuestions = questions.sort(() => Math.random() - .5)
+    currentQuestionIndex = 0
     newCardEl.classList.remove('hide')
     newCardEl.classList.add('my-card')
     setNextQuestion()
@@ -21,6 +25,17 @@ function startGame() {
 
 // setting next question (what happens when click on next button)
 function setNextQuestion() {
+  showQuestion(shuffledQuestions[currentQuestionIndex])
+}
+
+function showQuestion(question) {
+    questionEl.innerText = question.question
+    // question.answers.forEach(answer => {
+    //     const button = document.createElement('button')
+    //     button.innerText = answer.text
+    //     button.classList.add('btn')
+    //     if (answer  )
+    // })
 
 }
 
@@ -31,13 +46,60 @@ function selectAnswer() {
 
 const questions = [
     {
+        question: 'What is 2 + 2?',
+        answers: [
+            { text: '4', correct: true },
+            { text: '22', correct: false },
+            { text: '56', correct: false },
+            { text: '79', correct: false },
+        ],
+    },
+    {
         question: 'What is 2 + 2',
         answers: [
             { text: '4', correct: true },
-            { text: '22', correct: false }
-        ]
-    }
-]
+            { text: '22', correct: false },
+            { text: '56', correct: false },
+            { text: '79', correct: false },
+        ],
+    },
+    {
+        question: 'What is 2 + 2',
+        answers: [
+            { text: '4', correct: true },
+            { text: '22', correct: false },
+            { text: '56', correct: false },
+            { text: '79', correct: false },
+        ],
+    },
+    {
+        question: 'What is 2 + 2',
+        answers: [
+            { text: '4', correct: true },
+            { text: '22', correct: false },
+            { text: '56', correct: false },
+            { text: '79', correct: false },
+        ],
+    },
+    {
+        question: 'What is 2 + 2',
+        answers: [
+            { text: '4', correct: true },
+            { text: '22', correct: false },
+            { text: '56', correct: false },
+            { text: '79', correct: false },
+        ],
+    },
+    {
+        question: 'What is 2 + 2',
+        answers: [
+            { text: '4', correct: true },
+            { text: '22', correct: false },
+            { text: '56', correct: false },
+            { text: '79', correct: false },
+        ],
+    },
+];
 
 
 // for timer (use if needed)

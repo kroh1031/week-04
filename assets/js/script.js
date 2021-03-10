@@ -1,3 +1,24 @@
+// DOM elements
+const startButton = document.getElementById('start-btn')
+
+startButton.addEventListener('click', startGame)
+
+
+// need to start game (when click start button)
+function startGame() {
+    console.log('Started')
+}
+
+// setting next question (what happens when click on next button)
+function setNextQuestion() {
+
+}
+
+// do something when select answer
+function selectAnswer() {
+
+}
+
 var secondsLeft = 60;
 
 function startTimer() {

@@ -55,20 +55,29 @@ body {
     text-align: center;
 }
 
-  /* Button inside card */
+  /* Start button */
 .start-btn {
     color: white;
     border-color: rgb(255, 0, 0);
     background-color: rgb(255, 0, 0);
+    border-radius: 5px;
+    padding: 3px;
 }
 
-/* When hover over button */
+/* When hover over start button */
 .start-btn:hover {
     color: white;
     background-color: rgb(255, 85, 85);
     border-color: rgb(255, 85, 85);
 }
 
+/* Answer buttons */
+.btn {
+  color: black;
+  border: 3px solid black;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
 /* Footer */
 footer {
     padding: 10px;

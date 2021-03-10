@@ -31,14 +31,26 @@
 
 <!-- Card -->
   <div class="card my-card">
-    <div class="card-body">
+    <div id="card-questions" class="card-body">
       <h1 class="card-title">Coding Quiz Challenge</h1>
       <p class="card-text">Try to answer the following code-related questions within the time limit.</p>
       <p>Keep in mind that incorrect answers will take 10 seconds off the clock!</p>
-      <button id="start-btn" class="start-btn btn">Start Quiz</button>
+      <button id="start-btn" class="start-btn">Start Quiz</button>
       <button id="next-btn" class="next-btn btn hide">Next</button>
     </div>
   </div>
+
+  <!-- Questions and Answers -->
+  <div class="containers">
+    <div id="question-container" class="hide">
+      <div id="question">Question</div>
+      <div id="answer-buttons" class="btn-grid">
+        <button class="btn">Answer 1</button>
+        <button class="btn">Answer 2</button>
+        <button class="btn">Answer 3</button>
+        <button class="btn">Answer 4</button>
+      </div>
+    </div>
 
   <!-- Footer -->
   <footer>

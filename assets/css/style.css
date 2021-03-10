@@ -1,0 +1,89 @@
+* {
+    font-family:'Fredoka One', cursive;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100vh;
+}
+
+/* All elements inside body */
+body {
+    background-color: #feffcd;
+    min-height: 100vh;
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+
+/* Navbar */
+.my-navbar {
+    justify-content:space-between;
+    background-color: rgb(255, 118, 139);
+}
+
+/* Content inside navbar */
+.my-container {
+    color: white
+}
+
+/* View Highscores button */
+.scoreboard:hover {
+    border: 5px outset rgb(255, 255, 255);
+    cursor: pointer;
+    padding: 3px;
+}
+
+/* Card */
+.my-card {
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-radius: 40px;
+    border-width: 5px;
+    border-color: rgb(255, 139, 157);
+    color: hsl(206, 17%, 28%);
+    font-size: 18px;
+    max-width: 800px;
+    padding: 30px;
+}
+
+/* Content inside card */
+.card-body {
+    text-align: center;
+}
+
+  /* Button inside card */
+.my-button {
+    color: white;
+    border-color: rgb(255, 0, 0);
+    background-color: rgb(255, 0, 0);
+}
+
+/* When hover over button */
+.my-button:hover {
+    color: white;
+    background-color: rgb(255, 85, 85);
+    border-color: rgb(255, 85, 85);
+}
+
+/* Footer */
+footer {
+    padding: 10px;
+   position: absolute;
+   bottom: 0;
+   width: 100vw;
+   color: white;
+   text-align: center;
+   background-color: rgba(255, 112, 112, 0.959);
+}
+
+
+
+
+
+
+
+

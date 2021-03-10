@@ -7,6 +7,7 @@ startButton.addEventListener('click', startGame)
 // need to start game (when click start button)
 function startGame() {
     console.log('Started')
+    startButton.classList.add('hide')
 }
 
 // setting next question (what happens when click on next button)

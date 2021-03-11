@@ -30,13 +30,14 @@
   </nav>
 
 <!-- Card -->
-  <div class="card my-card">
+  <div class="card old-card">
     <div id="card-questions" class="card-body">
       <h1 class="card-title">Coding Quiz Challenge</h1>
       <p class="card-text">Try to answer the following code-related questions within the time limit.</p>
       <p>Keep in mind that incorrect answers will take 10 seconds off the clock!</p>
+      <div class="controls">
       <button id="start-btn" class="start-btn">Start Quiz</button>
-      <button id="next-btn" class="next-btn btn hide">Next</button>
+      </div>
     </div>
   </div>
 
@@ -51,6 +52,12 @@
         <button class="btn">Answer 4</button>
       </div>
     </div>
+
+  <!-- Scoreboard -->
+  <form id="form1" class="hide">
+    Initials: <input type="text" name="initials"><br>
+    <input type="button" onclick="clickSubmit()" value="Submit">
+  </form>
 
   <!-- Footer -->
   <footer>

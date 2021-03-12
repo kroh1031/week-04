@@ -1,16 +1,23 @@
-function getItems(){
-    let userScores = localStorage.getItem("scores");
-    let ul = document.createElement("ul");
-    userScores = JSON.parse(userScores);
+const clearButton = document.getElementById("clear");
+const ul = document.createElement("ul");
+let userScores = localStorage.getItem("scores");
 
-    for(let i = 0; i < userScores.length; i++){
-        let li = document.createElement("li")
-        console.log(userScores[i])
-        li.textContent = "User: "+ userScores[i].name + " Scores: "+ userScores[i].score
-        ul.appendChild(li);
-    }
+function getItems() {
+  userScores = JSON.parse(userScores);
 
-    document.getElementById("highscores-list").appendChild(ul);
+  for (let i = 0; i < userScores.length; i++) {
+    let li = document.createElement("li");
+    console.log(userScores[i]);
+    li.textContent =
+      "User: " + userScores[i].name + " Scores: " + userScores[i].score;
+    ul.appendChild(li);
+  }
+
+  document.getElementById("highscores-list").appendChild(ul);
+}
+function clearItems() {
+  ul.innerHTML = "";
 }
 
 getItems();
+clearButton.addEventListener("click", clearItems);

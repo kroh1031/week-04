@@ -9,6 +9,7 @@ const nameEl = document.querySelector("#form1 input");
 const timeRemain = document.getElementById("timer");
 const scoreEl = document.getElementById("score");
 const infoState = document.getElementById('info-state');
+const finalScore = document.getElementById('final-score')
 
 let score = 0;
 let secondsLeft = 60;
@@ -121,6 +122,7 @@ function endGame() {
   console.log("game ended!!!");
   newCardEl.classList.add("hide");
   // add text, " All done! Your final score is (score)."
+  finalScore.textContent = score + ".";
   formEl.classList.remove("hide");
   //collect the user's name and score
   //store it in local storage

@@ -8,8 +8,8 @@ const formEl = document.getElementById("form1");
 const nameEl = document.querySelector("#form1 input");
 const timeRemain = document.getElementById("timer");
 const scoreEl = document.getElementById("score");
-const infoState = document.getElementById('info-state');
-const finalScore = document.getElementById('final-score')
+const infoState = document.getElementById("info-state");
+const finalScore = document.getElementById("final-score");
 
 let score = 0;
 let secondsLeft = 60;
@@ -83,9 +83,9 @@ function selectAnswer(event) {
     //   increment score, if else take off time
 
     score += 10;
-    infoState.textContent = "Correct! The answer was "+ selectedButton.textContent; //check out setTimeout to make it disappear
-  
-  } else if (selectedButton.dataset.correct === false && secondsLeft < 10) {
+    infoState.textContent =
+      "Correct! The answer was " + selectedButton.textContent; //check out setTimeout to make it disappear
+  } else if (!selectedButton.dataset.correct && secondsLeft <= 10) {
     secondsLeft = 0; // timer does not go below 0 (only when I finish the quiz before it hits 0 sec) goes negative when too many wrong answers
   } else {
     secondsLeft -= 10;
@@ -94,12 +94,13 @@ function selectAnswer(event) {
     let correctAnswer;
     let correctAnswers = shuffledQuestions[currentQuestionIndex].answers;
     //look up foreach documentation
-    correctAnswers.forEach(function(answer){
-        if(answer.correct){
-            correctAnswer = answer;
-        }
-    })
-    infoState.textContent = "Wrong! The correct answer was "+ correctAnswer.text;
+    correctAnswers.forEach(function (answer) {
+      if (answer.correct) {
+        correctAnswer = answer;
+      }
+    });
+    infoState.textContent =
+      "Wrong! The correct answer was " + correctAnswer.text;
   }
 
   scoreEl.innerText = score;
@@ -118,9 +119,10 @@ function selectAnswer(event) {
 
 function endGame() {
   scoreEl.innerText = score;
-  // make timer stopppp!!!
-  console.log("game ended!!!");
   newCardEl.classList.add("hide");
+  if (secondsLeft < 0) {
+    timeRemain.innerText = "0";
+  }
   // add text, " All done! Your final score is (score)."
   finalScore.textContent = score + ".";
   formEl.classList.remove("hide");
@@ -132,28 +134,27 @@ function endGame() {
 // when click submit button
 function clickSubmit() {
   console.log("clicked submit button!!");
-  const storeName = document.getElementById('storeName');
+  const storeName = document.getElementById("storeName");
   //   store info into local storage and display in highscores.html
   const submitMessage = document.getElementById("submit-msg");
   const playAgainButton = document.getElementById("play-btn");
 
   /**
    * Local storage is frustrating
-   * 
+   *
    */
-    if(storeName.value){
-        let currentScores = localStorage.getItem("scores"); //scores = [{}, {}, {}]
-        currentScores = JSON.parse(currentScores);
-        if(!currentScores){
-            currentScores = [];
-        }
-        let inputScore = {"name": storeName.value, "score": score};
-        currentScores.push(inputScore)
-        console.log(currentScores)
-        localStorage.setItem("scores", JSON.stringify(currentScores));
-        console.log(localStorage.getItem("scores"))
+  if (storeName.value) {
+    let currentScores = localStorage.getItem("scores"); //scores = [{}, {}, {}]
+    currentScores = JSON.parse(currentScores);
+    if (!currentScores) {
+      currentScores = [];
     }
-
+    let inputScore = { name: storeName.value, score: score };
+    currentScores.push(inputScore);
+    console.log(currentScores);
+    localStorage.setItem("scores", JSON.stringify(currentScores));
+    console.log(localStorage.getItem("scores"));
+  }
 
   submitMessage.classList.remove("hide");
   playAgainButton.classList.remove("hide");
@@ -237,5 +238,3 @@ const questions = [
 // THEN the game is over
 // WHEN the game is over
 // THEN I can save my initials and my score
-
-

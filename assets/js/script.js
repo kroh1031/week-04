@@ -8,6 +8,7 @@ const formEl = document.getElementById("form1");
 const nameEl = document.querySelector("#form1 input");
 const timeRemain = document.getElementById("timer");
 const scoreEl = document.getElementById("score");
+const infoState = document.getElementById('info-state');
 
 let score = 0;
 let secondsLeft = 60;
@@ -35,13 +36,14 @@ function countdown() {
   var timerInterval = setInterval(function () {
     secondsLeft--;
     timeRemain.textContent = secondsLeft + "";
-    if (secondsLeft === 0) {
+    if (secondsLeft <= 0) {
       clearInterval(timerInterval);
+      endGame();
     }
   }, 1000);
 }
 
-// setting next question 
+// setting next question
 function setNextQuestion() {
   resetState();
   showQuestion(shuffledQuestions[currentQuestionIndex]);
@@ -78,12 +80,25 @@ function selectAnswer(event) {
   var selectedButton = event.target;
   if (selectedButton.dataset.correct) {
     //   increment score, if else take off time
+
     score += 10;
+    infoState.textContent = "Correct! The answer was "+ selectedButton.textContent; //check out setTimeout to make it disappear
+  
   } else if (selectedButton.dataset.correct === false && secondsLeft < 10) {
     secondsLeft = 0; // timer does not go below 0 (only when I finish the quiz before it hits 0 sec) goes negative when too many wrong answers
   } else {
     secondsLeft -= 10;
     score -= 10;
+    //you have to loop through shuffledQuestions[currentQuestionIndex] and check if the element is correct, get that element
+    let correctAnswer;
+    let correctAnswers = shuffledQuestions[currentQuestionIndex].answers;
+    //look up foreach documentation
+    correctAnswers.forEach(function(answer){
+        if(answer.correct){
+            correctAnswer = answer;
+        }
+    })
+    infoState.textContent = "Wrong! The correct answer was "+ correctAnswer.text;
   }
 
   scoreEl.innerText = score;
@@ -94,11 +109,6 @@ function selectAnswer(event) {
     resetState();
     showQuestion(shuffledQuestions[currentQuestionIndex]);
   } else {
-    // make timer stopppp!!!
-    console.log("game ended!!!");
-    newCardEl.classList.add("hide");
-    // add text, " All done! Your final score is (score)."
-    formEl.classList.remove("hide");
     // console.log(nameEl.value);
     // clickSubmit()
     endGame();
@@ -106,6 +116,12 @@ function selectAnswer(event) {
 }
 
 function endGame() {
+  scoreEl.innerText = score;
+  // make timer stopppp!!!
+  console.log("game ended!!!");
+  newCardEl.classList.add("hide");
+  // add text, " All done! Your final score is (score)."
+  formEl.classList.remove("hide");
   //collect the user's name and score
   //store it in local storage
   // direct user to highscores.html
@@ -114,11 +130,31 @@ function endGame() {
 // when click submit button
 function clickSubmit() {
   console.log("clicked submit button!!");
-//   store info into local storage and display in highscores.html
-const submitMessage = document.getElementById("submit-msg");
-const playAgainButton = document.getElementById("play-btn");
-submitMessage.classList.remove("hide");
-playAgainButton.classList.remove("hide");
+  const storeName = document.getElementById('storeName');
+  //   store info into local storage and display in highscores.html
+  const submitMessage = document.getElementById("submit-msg");
+  const playAgainButton = document.getElementById("play-btn");
+
+  /**
+   * Local storage is frustrating
+   * 
+   */
+    if(storeName.value){
+        let currentScores = localStorage.getItem("scores"); //scores = [{}, {}, {}]
+        currentScores = JSON.parse(currentScores);
+        if(!currentScores){
+            currentScores = [];
+        }
+        let inputScore = {"name": storeName.value, "score": score};
+        currentScores.push(inputScore)
+        console.log(currentScores)
+        localStorage.setItem("scores", JSON.stringify(currentScores));
+        console.log(localStorage.getItem("scores"))
+    }
+
+
+  submitMessage.classList.remove("hide");
+  playAgainButton.classList.remove("hide");
 }
 
 const questions = [
@@ -194,9 +230,10 @@ const questions = [
 // what i need to do:
 // 1. make "Your final score is (score). Go to View Highscores to view your recent highscores." pop up with submit form when answered all questions
 // 2. make timer stop on the page when submit form pops up
-// 3. when submit button clicked, 
+// 3. when submit button clicked,
 // 4. WHEN all questions are answered or the timer reaches 0
 // THEN the game is over
 // WHEN the game is over
 // THEN I can save my initials and my score
+
 

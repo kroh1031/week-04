@@ -56,8 +56,14 @@
 
   <!-- Scoreboard -->
   <form id="form1" class="hide">
+    <div>
+      <h1>All done!</h1>
+      <p>Your final score is <span id="finalScore">0</span></p>
+    </div>
     Enter your name: <input type="text" name="name"><br>
     <input type="button" onclick="clickSubmit()" value="Submit">
+    <button id="play-btn" class="hide">Play Again</button>
+    <h5 id="submit-msg" class="hide">Thank you for your submission! Play again or click on 'View Highscores' to see history of recent highscores.</h5>
   </form>
 
   <!-- Footer -->

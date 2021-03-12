@@ -80,7 +80,7 @@ function selectAnswer(event) {
     //   increment score, if else take off time
     score += 10;
   } else if (selectedButton.dataset.correct === false && secondsLeft < 10) {
-    secondsLeft = 0; // timer does not go below 0
+    secondsLeft = 0; // timer does not go below 0 (only when I finish the quiz before it hits 0 sec) goes negative when too many wrong answers
   } else {
     secondsLeft -= 10;
     score -= 10;
@@ -97,6 +97,7 @@ function selectAnswer(event) {
     // make timer stopppp!!!
     console.log("game ended!!!");
     newCardEl.classList.add("hide");
+    // add text, " All done! Your final score is (score)."
     formEl.classList.remove("hide");
     // console.log(nameEl.value);
     // clickSubmit()
@@ -112,8 +113,12 @@ function endGame() {
 
 // when click submit button
 function clickSubmit() {
-  console.log("clicked submit button!!")
-
+  console.log("clicked submit button!!");
+//   store info into local storage and display in highscores.html
+const submitMessage = document.getElementById("submit-msg");
+const playAgainButton = document.getElementById("play-btn");
+submitMessage.classList.remove("hide");
+playAgainButton.classList.remove("hide");
 }
 
 const questions = [
@@ -190,4 +195,8 @@ const questions = [
 // 1. make "Your final score is (score). Go to View Highscores to view your recent highscores." pop up with submit form when answered all questions
 // 2. make timer stop on the page when submit form pops up
 // 3. when submit button clicked, 
-// 
+// 4. WHEN all questions are answered or the timer reaches 0
+// THEN the game is over
+// WHEN the game is over
+// THEN I can save my initials and my score
+

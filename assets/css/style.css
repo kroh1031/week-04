@@ -30,7 +30,13 @@ body {
 }
 
 /* View Highscores button */
+.scoreboard {
+    color: white;
+    text-decoration: none;
+}
+
 .scoreboard:hover {
+    color: white;
     border: 5px outset rgb(255, 255, 255);
     cursor: pointer;
     padding: 3px;

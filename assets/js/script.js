@@ -5,10 +5,12 @@ const newCardEl = document.getElementById("question-container");
 const questionEl = document.getElementById("question");
 const answerButtonsEl = document.getElementById("answer-buttons");
 const formEl = document.getElementById("form1");
+const nameEl = document.querySelector("#form1 input");
 const timeRemain = document.getElementById("timer");
 const scoreEl = document.getElementById("score");
 
 let score = 0;
+let secondsLeft = 60;
 
 let shuffledQuestions, currentQuestionIndex;
 
@@ -30,18 +32,16 @@ function startGame() {
 
 // Timer countdown
 function countdown() {
-  var secondsLeft = 60;
   var timerInterval = setInterval(function () {
     secondsLeft--;
     timeRemain.textContent = secondsLeft + "";
     if (secondsLeft === 0) {
       clearInterval(timerInterval);
-      console.log("Quiz Over");
     }
   }, 1000);
 }
 
-// setting next question (what happens when click on next button)
+// setting next question 
 function setNextQuestion() {
   resetState();
   showQuestion(shuffledQuestions[currentQuestionIndex]);
@@ -74,11 +74,15 @@ function resetState() {
 // do something when select answer
 //look up event delegation of event listeners
 //null, empty strings, undefiends, etc are falsy values meaning they equal to false
-function selectAnswer(e) {
-  if (e.target.dataset.correct) {
+function selectAnswer(event) {
+  var selectedButton = event.target;
+  if (selectedButton.dataset.correct) {
     //   increment score, if else take off time
     score += 10;
+  } else if (selectedButton.dataset.correct === false && secondsLeft < 10) {
+    secondsLeft = 0; // timer does not go below 0
   } else {
+    secondsLeft -= 10;
     score -= 10;
   }
 
@@ -90,9 +94,12 @@ function selectAnswer(e) {
     resetState();
     showQuestion(shuffledQuestions[currentQuestionIndex]);
   } else {
+    // make timer stopppp!!!
     console.log("game ended!!!");
     newCardEl.classList.add("hide");
     formEl.classList.remove("hide");
+    // console.log(nameEl.value);
+    // clickSubmit()
     endGame();
   }
 }
@@ -103,10 +110,10 @@ function endGame() {
   // direct user to highscores.html
 }
 
+// when click submit button
 function clickSubmit() {
-  const initialEl = document.querySelector("#form1 input");
+  console.log("clicked submit button!!")
 
-  console.log(initialEl.value);
 }
 
 const questions = [
@@ -179,7 +186,8 @@ const questions = [
   },
 ];
 
-// steps need to take:
-// 1. when click on start, question #1 comes up
-// 2. when answered correctly, a msg at bottom comes up saying Correct! / when wrong, a msg pops up saying Wrong!
-// 3. when times runs out, scoreboard comes up
+// what i need to do:
+// 1. make "Your final score is (score). Go to View Highscores to view your recent highscores." pop up with submit form when answered all questions
+// 2. make timer stop on the page when submit form pops up
+// 3. when submit button clicked, 
+// 

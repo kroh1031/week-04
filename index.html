@@ -1,81 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
 
     <!-- My CSS -->
-    <link rel="stylesheet" href="./assets/css/style.css"/>
+    <link rel="stylesheet" href="./assets/css/style.css" />
 
     <!-- Google font -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Title -->
     <title>Karen's Coding Quiz</title>
-</head>
+  </head>
 
-<body>
-  <!-- Navbar -->
-  <nav class="navbar my-navbar">
-    <div class="container-fluid my-container">
-      <span class="navbar-brand">Karen's Coding Quiz</span>
-      <a href="highscores.html" class="scoreboard">View Highscores</a>
-      <div>Score: <span id="score">0</span></div>
-      <div>Time: <span id="timer">0</span></div>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar my-navbar">
+      <div class="container-fluid my-container">
+        <span class="navbar-brand">Karen's Coding Quiz</span>
+        <a href="highscores.html" class="scoreboard">View Highscores</a>
+        <div>Score: <span id="score">0</span></div>
+        <div>Time: <span id="timer">0</span></div>
+      </div>
+    </nav>
+
+    <!-- Card -->
+    <div class="card old-card">
+      <div id="card-questions" class="card-body">
+        <h1 class="card-title">Coding Quiz Challenge</h1>
+        <p class="card-text">
+          Try to answer the following code-related questions within the time
+          limit.
+        </p>
+        <p>
+          Keep in mind that incorrect answers will take 10 seconds off the
+          clock!
+        </p>
+        <div class="controls">
+          <button id="start-btn" class="start-btn">Start Quiz</button>
+        </div>
+      </div>
+
+      <!-- Scoreboard -->
+      <form id="form1" class="hide">
+        <div>
+          <h1>All done!</h1>
+          <p>Your final score is <span id="final-score">0</span></p>
+        </div>
+        Enter your name:
+        <input type="text" name="name" id="storeName" /><br /><br />
+        <input
+          type="button"
+          class="submit-btn"
+          onclick="clickSubmit()"
+          value="Submit"
+        />
+        <button id="play-btn" class="submit-btn hide">Play Again</button
+        ><br /><br />
+        <div id="submit-msg" class="hide">
+          <h5>Thank you for your submission!</h5>
+          <h5>
+            Play again or click on 'View Highscores' to see history of recent
+            highscores.
+          </h5>
+        </div>
+      </form>
     </div>
-  </nav>
 
-<!-- Card -->
-  <div class="card old-card">
-    <div id="card-questions" class="card-body">
-      <h1 class="card-title">Coding Quiz Challenge</h1>
-      <p class="card-text">Try to answer the following code-related questions within the time limit.</p>
-      <p>Keep in mind that incorrect answers will take 10 seconds off the clock!</p>
-      <div class="controls">
-      <button id="start-btn" class="start-btn">Start Quiz</button>
+    <!-- Questions and Answers -->
+    <div class="containers">
+      <div id="question-container" class="hide">
+        <div id="question">Question</div>
+        <div id="answer-buttons" class="btn-grid">
+          <button class="btn">Answer 1</button>
+          <button class="btn">Answer 2</button>
+          <button class="btn">Answer 3</button>
+          <button class="btn">Answer 4</button>
+        </div>
+        <p id="info-state"></p>
       </div>
     </div>
-  </div>
 
-  <!-- Questions and Answers -->
-  <div class="containers">
-    <div id="question-container" class="hide">
-      <div id="question">Question</div>
-      <div id="answer-buttons" class="btn-grid">
-        <button class="btn">Answer 1</button>
-        <button class="btn">Answer 2</button>
-        <button class="btn">Answer 3</button>
-        <button class="btn">Answer 4</button>
-      </div>
-      <p id="info-state"></p>
-    </div>
-
-  <!-- Scoreboard -->
-  <form id="form1" class="hide">
-    <div>
-      <h1>All done!</h1>
-      <p>Your final score is <span id="final-score">0</span></p>
-    </div>
-    Enter your name: <input type="text" name="name" id="storeName"><br>
-    <input type="button" onclick="clickSubmit()" value="Submit">
-    <button id="play-btn" class="hide">Play Again</button>
-    <h5 id="submit-msg" class="hide">Thank you for your submission! Play again or click on 'View Highscores' to see history of recent highscores.</h5>
-  </form>
-
-  <!-- Footer -->
-  <footer>
-    <!-- Copyright -->
-    <div class="mainfooter">
-      © 2021 Copyright: Karen Roh
-    </div>
-  </footer>
+    <!-- Footer -->
+    <footer>
+      <!-- Copyright -->
+      <div class="mainfooter">© 2021 Copyright: Karen Roh</div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./assets/js/script.js"></script>
-</body>
+  </body>
 </html>

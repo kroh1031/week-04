@@ -1,103 +1,101 @@
 * {
-    font-family:'Fredoka One', cursive;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  font-family: "Fredoka One", cursive;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    height: 100vh;
+  height: 100vh;
 }
 
 /* All elements inside body */
 body {
-    background-color: #feffcd;
-    min-height: 100vh;
-    position: relative;
-    margin: 0;
-    padding: 0;
-  }
+  background-color: #feffcd;
+  min-height: 100vh;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
 
 /* Navbar */
 .my-navbar {
-    justify-content:space-between;
-    background-color: rgb(255, 118, 139);
+  justify-content: space-between;
+  background-color: rgb(255, 118, 139);
 }
 
 /* Content inside navbar */
 .my-container {
-    color: white
+  color: white;
 }
 
 /* View Highscores button */
 .scoreboard {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 .scoreboard:hover {
-    color: white;
-    border: 5px outset rgb(255, 255, 255);
-    cursor: pointer;
-    padding: 3px;
+  color: white;
+  border: 5px outset rgb(255, 255, 255);
+  cursor: pointer;
+  padding: 3px;
 }
 
 /* Card */
 .old-card {
-    margin: 0 auto;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    border-radius: 40px;
-    border-width: 5px;
-    border-color: rgb(255, 139, 157);
-    color: hsl(206, 17%, 28%);
-    font-size: 18px;
-    max-width: 800px;
-    padding: 30px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  border-radius: 40px;
+  border-width: 5px;
+  border-color: rgb(255, 139, 157);
+  color: hsl(206, 17%, 28%);
+  font-size: 18px;
+  max-width: 800px;
+  padding: 30px;
 }
 
 /* New Card */
 .new-card {
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-radius: 40px;
-    border-width: 5px;
-    border-color: rgb(255, 139, 157);
-    color: hsl(206, 17%, 28%);
-    font-size: 18px;
-    max-width: 800px;
-    padding: 10px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 40px;
+  border-width: 5px;
+  border-color: rgb(255, 139, 157);
+  color: hsl(206, 17%, 28%);
+  font-size: 18px;
+  max-width: 800px;
+  padding: 10px;
 }
 
 /* Answer buttons */
 .btn-grid {
-    display: grid;
-    gap: 10px;
-    margin: 10px 0;
+  display: grid;
+  gap: 10px;
+  margin: 10px 0;
 }
 
 /* Content inside card */
 .card-body {
-    text-align: center;
+  text-align: center;
 }
 
-  /* Start button */
+/* Start button */
 .start-btn {
-    color: white;
-    border-color: rgb(255, 0, 0);
-    background-color: rgb(255, 0, 0);
-    border-radius: 5px;
-    padding: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-color: rgb(255, 0, 0);
+  background-color: rgb(255, 0, 0);
+  border-radius: 5px;
+  padding: 3px;
 }
 
-/* Next button */
-.next-btn {
-
-}
-
-/* Start and Next Buttons */
 .controls {
   display: flex;
   justify-content: center;
@@ -106,9 +104,9 @@ body {
 
 /* When hover over start button */
 .start-btn:hover {
-    color: white;
-    background-color: rgb(255, 85, 85);
-    border-color: rgb(255, 85, 85);
+  color: white;
+  background-color: rgb(255, 85, 85);
+  border-color: rgb(255, 85, 85);
 }
 
 /* Answer buttons */
@@ -119,39 +117,48 @@ body {
   padding: 5px 10px;
 }
 
+/* Submit and Play Again buttons */
+.submit-btn {
+  color: white;
+  background-color: rgb(255, 85, 85);
+  border-color: rgb(255, 85, 85);
+  border-radius: 5px;
+  padding: 3px;
+}
+
+/* Go Back and Clear Highscores */
+.go-back-btn {
+  color: white;
+  background-color: rgb(255, 85, 85);
+  border-color: rgb(255, 85, 85);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: large;
+}
+
+/* When hover over Go Back and Clear Highscores buttons */
+.go-back-btn:hover {
+  cursor: pointer;
+  font-size: large;
+}
+
 /* When hover over answer buttons */
 .btn:hover {
-    background-color: rgb(255, 85, 85);
-}
-
-/* If selected button is correct */
-.btn.correct {
-    background-color: green;
-}
-
-/* If selected button is wrong */
-.btn.wrong {
-    background-color: red;
+  background-color: rgb(255, 85, 85);
 }
 
 /* Footer */
 footer {
-    padding: 10px;
-   position: absolute;
-   bottom: 0;
-   width: 100vw;
-   color: white;
-   text-align: center;
-   background-color: rgba(255, 112, 112, 0.959);
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  color: white;
+  text-align: center;
+  background-color: rgba(255, 112, 112, 0.959);
 }
 
 /* Hide element */
 .hide {
-    display: none;
+  display: none;
 }
-
-
-
-
-
-

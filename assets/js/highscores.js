@@ -1,5 +1,5 @@
 const clearButton = document.getElementById("clear");
-const ul = document.createElement("ul");
+const ol = document.createElement("ol");
 let userScores = localStorage.getItem("scores");
 
 function getItems() {
@@ -9,14 +9,15 @@ function getItems() {
     let li = document.createElement("li");
     console.log(userScores[i]);
     li.textContent =
-      "User: " + userScores[i].name + " Scores: " + userScores[i].score;
-    ul.appendChild(li);
+      "Name: " + userScores[i].name + " Score: " + userScores[i].score;
+    ol.appendChild(li);
   }
 
-  document.getElementById("highscores-list").appendChild(ul);
+  document.getElementById("highscores-list").appendChild(ol);
 }
 function clearItems() {
-  ul.innerHTML = "";
+  localStorage.clear();
+  ol.innerHTML = "";
 }
 
 getItems();

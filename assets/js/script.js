@@ -18,7 +18,7 @@ let shuffledQuestions, currentQuestionIndex;
 
 startButton.addEventListener("click", startGame);
 
-// need to start game (when click start button)
+// Start game
 function startGame() {
   countdown();
   console.log("Started");
@@ -44,7 +44,7 @@ function countdown() {
   }, 1000);
 }
 
-// setting next question
+// Setting next question
 function setNextQuestion() {
   resetState();
   showQuestion(shuffledQuestions[currentQuestionIndex]);
@@ -67,16 +67,14 @@ function showQuestion(question) {
 
 answerButtonsEl.addEventListener("click", selectAnswer);
 
-// Removing answer buttons from page
+// Resetting state
 function resetState() {
   while (answerButtonsEl.firstChild) {
     answerButtonsEl.removeChild(answerButtonsEl.firstChild);
   }
 }
 
-// do something when select answer
-//look up event delegation of event listeners
-//null, empty strings, undefiends, etc are falsy values meaning they equal to false
+// When select a button
 function selectAnswer(event) {
   var selectedButton = event.target;
   if (selectedButton.dataset.correct) {
@@ -84,16 +82,14 @@ function selectAnswer(event) {
 
     score += 10;
     infoState.textContent =
-      "Correct! The answer was " + selectedButton.textContent; //check out setTimeout to make it disappear
+      "Correct! The answer was " + selectedButton.textContent;
   } else if (!selectedButton.dataset.correct && secondsLeft <= 10) {
-    secondsLeft = 0; // timer does not go below 0 (only when I finish the quiz before it hits 0 sec) goes negative when too many wrong answers
+    secondsLeft = 0;
   } else {
     secondsLeft -= 10;
     score -= 10;
-    //you have to loop through shuffledQuestions[currentQuestionIndex] and check if the element is correct, get that element
     let correctAnswer;
     let correctAnswers = shuffledQuestions[currentQuestionIndex].answers;
-    //look up foreach documentation
     correctAnswers.forEach(function (answer) {
       if (answer.correct) {
         correctAnswer = answer;
@@ -105,14 +101,13 @@ function selectAnswer(event) {
 
   scoreEl.innerText = score;
 
-  currentQuestionIndex++; //this is shorthand for var = var + 1
+  currentQuestionIndex++;
 
   if (currentQuestionIndex < questions.length) {
     resetState();
     showQuestion(shuffledQuestions[currentQuestionIndex]);
   } else {
-    // console.log(nameEl.value);
-    // clickSubmit()
+    clickSubmit();
     endGame();
   }
 }
@@ -123,26 +118,17 @@ function endGame() {
   if (secondsLeft < 0) {
     timeRemain.innerText = "0";
   }
-  // add text, " All done! Your final score is (score)."
   finalScore.textContent = score + ".";
   formEl.classList.remove("hide");
-  //collect the user's name and score
-  //store it in local storage
-  // direct user to highscores.html
 }
 
-// when click submit button
+// When click submit button
 function clickSubmit() {
   console.log("clicked submit button!!");
   const storeName = document.getElementById("storeName");
-  //   store info into local storage and display in highscores.html
   const submitMessage = document.getElementById("submit-msg");
   const playAgainButton = document.getElementById("play-btn");
 
-  /**
-   * Local storage is frustrating
-   *
-   */
   if (storeName.value) {
     let currentScores = localStorage.getItem("scores"); //scores = [{}, {}, {}]
     currentScores = JSON.parse(currentScores);
@@ -229,12 +215,3 @@ const questions = [
     ],
   },
 ];
-
-// what i need to do:
-// 1. make "Your final score is (score). Go to View Highscores to view your recent highscores." pop up with submit form when answered all questions
-// 2. make timer stop on the page when submit form pops up
-// 3. when submit button clicked,
-// 4. WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
-// WHEN the game is over
-// THEN I can save my initials and my score

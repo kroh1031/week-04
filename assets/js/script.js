@@ -107,7 +107,6 @@ function selectAnswer(event) {
     resetState();
     showQuestion(shuffledQuestions[currentQuestionIndex]);
   } else {
-    clickSubmit();
     endGame();
   }
 }
